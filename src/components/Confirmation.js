@@ -8,7 +8,7 @@ const {Title, Text} = Typography;
 
 
 const {
-    Header, Content, Footer,
+    Content, Footer,
 } = Layout;
 
 function getQueryVariable(variable) {
@@ -104,7 +104,6 @@ class Confirmation extends Component {
                 message.error("No connection");
             }
         });
-
     }
 }
 

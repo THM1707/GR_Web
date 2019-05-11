@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import {Route, Switch} from "react-router-dom";
+import 'antd/dist/antd.css';
+import 'semantic-ui-css/semantic.min.css';
 import WrappedNormalLoginForm from "./components/LoginPage";
 import SignUpPage from './components/SignUpPage';
 import AppContext from './control/auth-context';

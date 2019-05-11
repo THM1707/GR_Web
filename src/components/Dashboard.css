@@ -1,0 +1,22 @@
+.trigger {
+    font-size: 18px;
+    line-height: 64px !important;
+    padding: 0 24px;
+    transition: color .3s;
+}
+
+.trigger:hover {
+    color: #1890ff;
+}
+
+.dash-logo {
+    height: 32px;
+    background: rgba(255, 255, 255, .2);
+    margin: 16px !important;
+}
+
+.logout {
+    float: right;
+    margin-top: 16px;
+    margin-right: 40px;
+}
