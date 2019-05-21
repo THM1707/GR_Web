@@ -27,11 +27,11 @@ function getQueryVariable(variable) {
 }
 
 const Success =
-    <Content style={{padding: '0 50px'}}>
+    <Content style={{padding: '0 50px', background: '#fff'}}>
         <Title style={{margin: '16px 0', textAlign: 'center'}}>
             Your account has been activated
         </Title>
-        <Layout style={{padding: '24px 0', background: '#fff', textAlign: 'center'}}>
+        <Layout style={{padding: '24px 0', textAlign: 'center', background: '#fff'}}>
             <img src='https://png.pngtree.com/svg/20170918/007d30559e.svg'
                  style={{
                      padding: '0 24px',
@@ -46,11 +46,11 @@ const Success =
     </Content>;
 
 const Fail =
-    <Content style={{padding: '0 50px'}}>
+    <Content style={{padding: '0 50px', background: '#fff'}}>
         <Title style={{margin: '16px 0', textAlign: 'center'}}>
             Your token is invalid
         </Title>
-        <Layout style={{padding: '24px 0', background: '#fff', textAlign: 'center'}}>
+        <Layout style={{padding: '24px 0', textAlign: 'center', background: '#fff'}}>
             <img src='https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Close_Icon_Circle-512.png'
                  style={{
                      padding: '0 24px',
@@ -73,12 +73,9 @@ class Confirmation extends Component {
 
     render() {
         return (
-            <Layout style={{paddingTop: '30px'}}>
+            <Layout style={{paddingTop: '30px', background: '#fff'}}>
                 {this.state.loaded ? this.state.legit ? Success : Fail :
                     <div style={{background: '#fff', padding: 24, minHeight: 400, textAlign: 'center'}}/>}
-                <Footer style={{textAlign: 'center'}}>
-                    Ant Design ©2018 Created by Ant UED
-                </Footer>
             </Layout>
         );
     }

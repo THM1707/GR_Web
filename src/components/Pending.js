@@ -4,7 +4,12 @@ import axios from "axios";
 import {Link} from 'react-router-dom';
 
 const {Meta} = Card;
-
+const IconText = ({type, text}) => (
+    <span>
+    <Icon type={type} style={{marginRight: 8}}/>
+        {text}
+  </span>
+);
 class Pending extends Component {
 
     state = {
@@ -13,26 +18,29 @@ class Pending extends Component {
 
     render() {
         return (
-            <List
-                grid={{gutter: 16, column: 4}}
-                dataSource={this.state.data}
-                renderItem={item => (
-                    <List.Item>
-                        <Card
-                            bordered={true}
-                            cover={<img alt="example"
-                                        src={item.image !== undefined ? 'http://localhost:8080/api/image/' + item.image.id
-                                            : 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'}/>}
-                            actions={[<Link to={"/dashboard/pending/" + item.id}><Icon type="eye"/></Link>]}
-                        >
-                            <Meta
-                                title={item.propertyName}
-                                description={item.address}
-                            />
-                        </Card>
-                    </List.Item>
-                )}
-            />
+            <div>
+                <List
+                    grid={{gutter: 16, column: 4}}
+                    dataSource={this.state.data}
+                    renderItem={item => (
+                        <List.Item>
+                            <Card
+                                bordered={true}
+                                cover={<img alt="example"
+                                            src={item.image !== undefined ? 'http://localhost:8080/api/image/' + item.image.id
+                                                : 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'}/>}
+                                actions={[<Link to={"/dashboard/pending/" + item.id}><IconText type="eye" text="View"/></Link>]}
+                            >
+                                <Meta
+                                    title={item.propertyName}
+                                    description={item.address}
+                                />
+                            </Card>
+                        </List.Item>
+                    )}
+                />
+
+            </div>
         );
     }
 

@@ -70,18 +70,12 @@ class NormalLoginForm extends React.Component {
 
     render() {
         const {getFieldDecorator} = this.props.form;
-        const {isAuthenticated} = this.props;
-        if (isAuthenticated) {
-            return (
-                <Redirect to='/dashboard'/>
-            )
-        }
         return (
             <div className="login-layout" style={{textAlign: 'center'}}>
 
                 <Icon component={AdminIcon} style={{marginTop: '60px'}}/>
 
-                <Title level={1} style={{marginBottom: '30px'}} >Admin login</Title>
+                <Title level={1} style={{marginBottom: '30px'}}>Admin login</Title>
 
                 <Form onSubmit={this.handleSubmit} className="login-form">
                     <Form.Item>
