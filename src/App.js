@@ -1,19 +1,21 @@
 import React, {Component} from "react";
-import {Route, Switch, Redirect, BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import 'antd/dist/antd.css';
 import 'semantic-ui-css/semantic.min.css';
-import WrappedNormalLoginForm from "./components/LoginPage";
-import SignUpPage from './components/SignUpPage';
+import WrappedNormalLoginForm from "./components/AdminLoginLayout";
+import SignUpLayout from './components/SignUpLayout';
 import AppContext from './control/auth-context';
 import DashboardLayout from "./components/DashboardLayout";
-import Confirmation from "./components/Confirmation";
-import HomepageLayout from "./components/Home";
-import Pending from "./components/Pending";
-import PendingInfo from "./components/PendingInfo";
-import StatisticPage from "./components/StatisticPage";
-import PropertyPage from "./components/PropertyPage";
-import {withRouter} from 'react-router';
+import ConfirmationLayout from "./components/ConfirmationLayout";
+import HomepageLayout from "./components/LandingLayout";
+import PendingLayout from "./components/PendingLayout";
+import PendingInfoLayout from "./components/PendingInfoLayout";
+import StatisticLayout from "./components/StatisticLayout";
+import PropertyLayout from "./components/PropertyLayout";
 import {Skeleton} from "antd";
+import WrappedLoginForm from "./components/LoginLayout";
+import ErrorLayout from "./components/ErrorLayout";
+import EditLayout from "./components/EditLayout";
 
 class App extends Component {
 
@@ -46,25 +48,27 @@ class App extends Component {
                                        <WrappedNormalLoginForm authenticate={this.authenticate}
                                                                isAuthenticated={this.state.isAuthenticated}/> :
                                        <Redirect to="/dashboard"/>}/>
-                            <Route path="/signUp" component={SignUpPage}/>
+                            <Route path="/signUp" component={SignUpLayout}/>
+                            <Route path="/login" component={WrappedLoginForm}/>
+                            <Route path="/edit/:id" component={EditLayout}/>
                             <Route path="/dashboard" render={() => {
                                 if (this.state.isAuthenticated)
                                     return (
                                         <DashboardLayout>
                                             <Switch>
-                                                <Route exact path='/dashboard' component={Pending}/>
-                                                <Route exact path='/dashboard/pending/:id' component={PendingInfo}/>
-                                                <Route exact path='/dashboard/stats' component={StatisticPage}/>
-                                                <Route exact path='/dashboard/property' component={PropertyPage}/>
-                                                <Route component={() => '404 Not Found'}/>
+                                                <Route exact path='/dashboard' component={PendingLayout}/>
+                                                <Route path='/dashboard/pending/:id' component={PendingInfoLayout}/>
+                                                <Route path='/dashboard/stats' component={StatisticLayout}/>
+                                                <Route path='/dashboard/property' component={PropertyLayout}/>
+                                                <Route component={ErrorLayout}/>
                                             </Switch>
                                         </DashboardLayout>);
                                 else
                                     return <Redirect to="/admin/login"/>
                             }}
                             />
-                            <Route path='/confirmation' component={Confirmation}/>
-                            <Route component={() => '404 Not Found'}/>
+                            <Route path='/confirmation' component={ConfirmationLayout}/>
+                            <Route component={ErrorLayout}/>
                         </Switch>
                     </Router>
                 </AppContext.Provider>

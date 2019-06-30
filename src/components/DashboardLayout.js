@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import AuthContext from '../control/auth-context';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {Button, Icon, Layout, Menu} from 'antd';
 import './Dashboard.css';
 
@@ -9,6 +9,7 @@ const {Header, Sider, Content} = Layout;
 class DashboardLayout extends Component {
     state = {
         collapsed: false,
+        selected: ['1'],
     };
 
     toggle = () => {
@@ -18,15 +19,16 @@ class DashboardLayout extends Component {
     };
 
     render() {
+        const selected = this.state.selected;
         return (
             <Layout style={{height: '100%', minHeight: '100vh'}}>
-                <Sider
+                <Sider theme="light"
                     trigger={null}
                     collapsible
                     collapsed={this.state.collapsed}
                 >
                     <div className="dash-logo"/>
-                    <Menu theme="dark" mode="inline">
+                    <Menu theme="light" mode="inline" defaultSelectedKeys={selected}>
                         <Menu.Item key="1">
                             <Icon type="form"/>
                             <span>Pending</span>
@@ -69,6 +71,21 @@ class DashboardLayout extends Component {
 
     };
 
+    componentWillMount() {
+        switch (window.location.pathname) {
+            case '/dashboard':
+            default:
+                this.setState({selected: ['1']});
+                break;
+            case  '/dashboard/stats':
+                this.setState({selected: ['2']});
+                break;
+            case  '/dashboard/property':
+                this.setState({selected: ['3']});
+                break;
+
+        }
+    }
 }
 
 DashboardLayout.contextType = AuthContext;

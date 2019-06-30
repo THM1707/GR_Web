@@ -137,9 +137,14 @@ const ParkingCreateForm = Form.create({name: 'create_form'})(
                                 valuePropName: 'fileList',
                                 getValueFromEvent: this.normFile,
                             })(
-                                <Upload name="logo" action="/upload.do" listType="picture">
+                                <Upload name="logo" action={() => {
+                                    return false
+                                }} listType="picture"
+                                        beforeUpload={() => {
+                                            return false
+                                        }}>
                                     <Button>
-                                        <Icon type="upload"/> Click to upload
+                                        <Icon type="upload"/> Click to upload picture
                                     </Button>
                                 </Upload>
                             )}

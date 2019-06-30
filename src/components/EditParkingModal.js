@@ -132,14 +132,21 @@ const ParkingEditForm = Form.create({name: 'edit_form'})(
                             label="Picture"
                         >
                             {getFieldDecorator('upload', {
-                                rules: [{type: 'object', required: true, message: 'Please upload an image!'}],
+                                rules: [{type: 'object', required: false}],
                             }, {
                                 valuePropName: 'fileList',
                                 getValueFromEvent: this.normFile,
                             })(
-                                <Upload name="logo" action="/upload.do" listType="picture">
+                                <Upload name="logo"
+                                        listType="picture"
+                                        action={() => {
+                                            return false
+                                        }}
+                                        beforeUpload={() => {
+                                            return false
+                                        }}>
                                     <Button>
-                                        <Icon type="upload"/> Click to upload
+                                        <Icon type="upload"/> Click to upload picture
                                     </Button>
                                 </Upload>
                             )}
