@@ -6,7 +6,7 @@
     "antd": "^3.16.1",
     "apexcharts": "^3.6.11",
     "axios": "^0.18.0",
-    "express": "^4.17.0",
+    "express": "^4.17.3",
     "express-favicon": "^2.0.1",
     "path": "^0.12.7",
     "react": "^16.8.6",
